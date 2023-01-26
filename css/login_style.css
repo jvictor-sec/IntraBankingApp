@@ -1,0 +1,40 @@
+.main-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5em;
+  gap: 5em;
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8)),url("../img/background.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.main-container .main-text {
+  max-width: 35%;
+  text-align: justify;
+  color: #E6EDF6;
+}
+
+.main-container .main-text h1 {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--title-primary-color);
+}
+
+.main-container .main-text h2 {
+  font-weight: 700;
+  font-size: 1.8em;
+  margin-top: 1em;
+  color: var(--text-secondary-color);
+}
+
+.main-container .main-text p {
+  font-weight: 500;
+  font-size: 0.9em;
+  margin-top: 1.2em;
+}
+
+.main-container .main-text p span {
+  color: var(--title-primary-color);
+}
