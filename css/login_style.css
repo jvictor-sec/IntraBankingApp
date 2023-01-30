@@ -10,27 +10,27 @@
   background-size: cover;
 }
 
-.main-container .main-text {
+.main-text {
   max-width: 35%;
   text-align: justify;
   color: #E6EDF6;
   /* border: 1px solid red; */
 }
 
-.main-container .main-text h1 {
+.main-text h1 {
   font-weight: 700;
   letter-spacing: 0.5px;
   color: var(--primary-color);
 }
 
-.main-container .main-text h2 {
+.main-text h2 {
   font-weight: 700;
   font-size: 1.8em;
   margin-top: 1em;
   color: var(--text-secondary-color);
 }
 
-.main-container .main-text p {
+.main-text p {
   font-weight: 500;
   font-size: 0.9em;
   margin-top: 1.2em;
@@ -49,7 +49,7 @@ span:last-child:hover {
   opacity: 0.8
 }
 
-.main-container .main-form {
+.main-form {
   width: 37%;
   border-radius: 1em;
   color: var(--text-secondary-color);
@@ -58,12 +58,12 @@ span:last-child:hover {
   padding: 1em;
 }
 
-.main-container .main-form fieldset {
+.main-form fieldset {
   border: 3px solid var(--primary-color);
   padding: 1em;
 }
 
-.main-container .main-form fieldset legend {
+.main-form fieldset legend {
   font-weight: 500;
   padding: 0.4em;
   /* border-radius: 1em; */
@@ -72,12 +72,12 @@ span:last-child:hover {
   /* text-align: center; */
 }
 
-.main-container .main-form fieldset .form-fields {
+.main-form fieldset .form-fields {
   position: relative;
   margin-top: 4.5em;
 }
 
-.main-container .main-form fieldset .form-fields .form-input {
+.main-form fieldset .form-fields .form-input {
   background: none;
   border: none;
   border-bottom: 1px solid var(--text-secondary-color);
@@ -88,14 +88,14 @@ span:last-child:hover {
   letter-spacing: 0.5px;
 }
 
-.main-container .main-form fieldset .form-fields .form-label {
+.main-form fieldset .form-fields .form-label {
   position: absolute;
   top: 0;
   left: 0;
   transition: 0.5s;
 }
 
-.main-container .main-form fieldset .form-fields .form-label#tel-label {
+.main-form fieldset .form-fields .form-label#tel-label {
   position: absolute;
   left: 0;
   top: -15px;
@@ -104,21 +104,21 @@ span:last-child:hover {
   color: var(--primary-color);
 }
 
-.main-container .main-form fieldset .form-fields .form-input:focus ~ .form-label,
-.main-container .main-form fieldset .form-fields .form-input:valid ~ .form-label {
+.main-form fieldset .form-fields .form-input:focus ~ .form-label,
+.main-form fieldset .form-fields .form-input:valid ~ .form-label {
   top: -15px;
   font-weight: 500;
   font-size: 0.8em;
   color: var(--primary-color);
 }
 
-.main-container .main-form fieldset p {
+.main-form fieldset p {
   font-size: 0.8em;
   margin-top: 1.2em;
   text-align: center;
 }
 
-.main-container .main-form fieldset #form-button {
+.main-form fieldset #form-button {
   border: none;
   padding: 0.5em;
   background: linear-gradient(90deg, rgba(31,2,2,1) 0%, rgba(194,12,12,1) 0%, rgba(125,12,12,1) 79%);
@@ -131,13 +131,46 @@ span:last-child:hover {
   transition: 0.5s;
 }
 
-.main-container .main-form fieldset #form-button:hover {
+.main-form fieldset #form-button:hover {
   background: linear-gradient(90deg, rgba(31,0,0,0) 0%, rgba(174,2,2,1) 0%, rgba(105,6,6,1) 79%);
 }
-/* .main-container .main-form fieldset .form-fields .form-input#tel:focus ~ .form-label,
-.main-container .main-form fieldset .form-fields .form-input#tel:valid ~ .form-label {
-  top: -15px;
-  font-weight: 500;
-  font-size: 0.8em;
-  color: var(--primary-color)
-} */
+
+.login-form-container {
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8));
+  width: 100vw;
+  height: 100vh;
+}
+
+#close-button {
+  position: relative;
+  color: var(--text-secondary-color);
+  font-size: 2em;
+  left: 8.5em;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#close-button:hover {
+  transform: rotate(45deg);
+}
+
+.login-form {
+  /* width: 30%; */
+  z-index: 9999;
+  background-color: var(--text-secondary-color);
+}
+
+.login-form fieldset .form-fields .form-input {
+  color: var(--text-primary-color);
+  border-bottom: 1px solid var(--text-primary-color);
+}
+
+.login-form fieldset .form-fields .form-label {
+  color: var(--text-primary-color)
+}
