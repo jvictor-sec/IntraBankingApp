@@ -5,7 +5,7 @@
   padding: 5em;
   gap: 5em;
   height: 100vh;
-  background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8)),url("../img/background.jpg");
+  background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)),url("../img/background.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -95,7 +95,8 @@ span:last-child:hover {
   transition: 0.5s;
 }
 
-.main-form fieldset .form-fields .form-label#tel-label {
+.main-form fieldset .form-fields .form-label#tel-label,
+.main-form fieldset .form-fields .form-label#email-label {
   position: absolute;
   left: 0;
   top: -15px;
@@ -161,7 +162,6 @@ span:last-child:hover {
 }
 
 .login-form {
-  /* width: 30%; */
   z-index: 9999;
   background-color: var(--text-secondary-color);
 }
