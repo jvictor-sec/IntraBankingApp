@@ -95,8 +95,8 @@ span:last-child:hover {
   transition: 0.5s;
 }
 
-.main-form fieldset .form-fields .form-label#tel-label,
-.main-form fieldset .form-fields .form-label#email-label {
+.main-form fieldset .form-fields .tel-label,
+.main-form fieldset .form-fields .email-label {
   position: absolute;
   left: 0;
   top: -15px;
@@ -146,23 +146,31 @@ span:last-child:hover {
   background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8));
   width: 100vw;
   height: 100vh;
+  /* border: 1px solid red; */
+}
+
+#login-form-controller {
+  /* border: 1px solid red; */
+  z-index: 1;
+  width: 35%;
 }
 
 #close-button {
   position: relative;
   color: var(--text-secondary-color);
   font-size: 2em;
-  left: 8.5em;
+  left: 100%;
   cursor: pointer;
   transition: 0.5s;
 }
 
 #close-button:hover {
-  transform: rotate(45deg);
+  color: var(--primary-color);
 }
 
 .login-form {
-  z-index: 9999;
+  width: 100%;
+  /* border: 1px solid red; */
   background-color: var(--text-secondary-color);
 }
 
@@ -171,6 +179,6 @@ span:last-child:hover {
   border-bottom: 1px solid var(--text-primary-color);
 }
 
-.login-form fieldset .form-fields .form-label {
-  color: var(--text-primary-color)
+.login-form fieldset .form-fields:last-of-type .form-label {
+  color: var(--text-primary-color);
 }

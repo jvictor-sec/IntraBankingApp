@@ -7,7 +7,7 @@ const loginFormContainer = document.querySelector('#login-form-container')
 const openLoginForm = document.querySelector('#open-signin-form');
 const closeLoginForm = document.querySelector('#close-button');
 
-const signInFormInputs = document.querySelectorAll('.signin-input');
+const loginFormController = document.querySelector('#login-form-controller');
 
 function showNotification(title, body) {
   let notification = new Notification(title, { body });
@@ -53,7 +53,7 @@ loginForm.addEventListener('submit', event => {
   .then(response => {
     if(response.status === 'success') {
       showNotification('Novo cadastro', response.data);
-      loginForm.reset;
+      loginForm.reset();
     } else {
       showNotification('Novo cadastro', response.data);
     }
@@ -63,14 +63,16 @@ loginForm.addEventListener('submit', event => {
 
 
 openLoginForm.addEventListener('click', () => {
-  signInFormInputs.forEach(input => {
-    input.setAttribute('disabled', true);
-    input.value = '';
-  });
+  signinForm.children[0].setAttribute('disabled', true);
+
+  signinForm.reset();
+  loginFormController.style.zIndex = 1;
   loginFormContainer.style.visibility = 'visible';
 });
 
 closeLoginForm.addEventListener('click', () => {
-  signInFormInputs.forEach(input => input.removeAttribute('disabled'));
+  signinForm.children[0].removeAttribute('disabled');
+  loginForm.reset();
+  loginFormController.style.zIndex = -1;
   loginFormContainer.style.visibility = 'hidden';
 });

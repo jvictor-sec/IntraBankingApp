@@ -9,27 +9,29 @@
   </head>
   <body>
     <div id="login-form-container" class="login-form-container">
-      <span id="close-button">&times;</span>
+      <div id="login-form-controller">
+        <span id="close-button">&times;</span>
 
-      <form id="login-form" class="main-form login-form" action="" method="POST">
-        <fieldset>
-          <legend>Entre em sua conta</legend>
+        <form id="login-form" class="main-form login-form" action="" method="POST">
+          <fieldset>
+            <legend>Entre em sua conta</legend>
 
-          <input type="hidden" name="login_controller" value="login_controller">
+            <input type="hidden" name="login_controller" value="login_controller">
 
-          <div class="form-fields">
-            <input type="text" name="user_email" required class="form-input">
-            <label for="email" class="form-label">Email</label>
-          </div>
+            <div class="form-fields">
+              <input type="email" name="user_email" required placeholder="exemplo@exemplo.com" class="form-input">
+              <label for="email" class="form-label email-label">Email</label>
+            </div>
 
-          <div class="form-fields">
-            <input type="password" name="user_password" required class="form-input">
-            <label for="password" class="form-label">Senha</label>
-          </div>
+            <div class="form-fields">
+              <input type="password" name="user_password" required class="form-input">
+              <label for="password" class="form-label">Senha</label>
+            </div>
 
-          <button type="submit" name="button" id="form-button">Criar</button>
-        </fieldset>
-      </form>
+            <button type="submit" name="button" id="form-button">Criar</button>
+          </fieldset>
+        </form>
+      </div>
     </div>
 
     <main class="main-container">
@@ -50,12 +52,12 @@
 
           <div class="form-fields">
             <input type="email" name="user_email" required placeholder="exemplo@exemplo.com" class="form-input signin-input">
-            <label for="email" id="email-label" class="form-label">Email</label>
+            <label for="email" class="form-label email-label">Email</label>
           </div>
 
           <div class="form-fields">
             <input type="tel" name="user_phone_number" required pattern="(\([0-9]{2}\))\s([0-9]{5})-([0-9]{4})" placeholder="(99) 99999-9999" class="form-input signin-input">
-            <label for="tel" id="tel-label" class="form-label">Número</label>
+            <label for="tel" class="form-label tel-label">Número</label>
           </div>
 
           <div class="form-fields">
