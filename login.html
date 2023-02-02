@@ -2,15 +2,17 @@
 <html lang="pt-br" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>IntraBankingApp</title>
+    <title>IntraBankingApp | Login</title>
     <link rel="stylesheet" href="./css/global.css">
-    <link rel="stylesheet" href="./css/login_style.css">
+    <link rel="stylesheet" href="./css/loginStyle.css">
     <script src="./js/main.js" defer charset="utf-8"></script>
+    <script src="./js/login/loginFunctions.js" defer charset="utf-8"></script>
+    <script src="./js/login/loginScript.js" defer charset="utf-8"></script>
   </head>
   <body>
     <div id="login-form-container" class="login-form-container">
       <div id="login-form-controller">
-        <span id="close-button">&times;</span>
+        <span id="close-form-button">&times;</span>
 
         <form id="login-form" class="main-form login-form" action="" method="POST">
           <fieldset>
@@ -65,7 +67,7 @@
             <label for="password" class="form-label">Senha</label>
           </div>
 
-          <p>Já possui uma conta? Entre agora mesmo clicando <span id="open-signin-form">aqui</span></p>
+          <p>Já possui uma conta? Entre agora mesmo clicando <span id="open-form-button">aqui</span></p>
 
           <button type="submit" name="button" id="form-button">Criar</button>
         </fieldset>
