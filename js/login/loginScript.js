@@ -1,11 +1,8 @@
 const signinForm = document.querySelector('#signin-form');
 const loginForm = document.querySelector('#login-form');
 
-const loginFormContainer = document.querySelector('#login-form-container')
-const loginFormController = document.querySelector('#login-form-controller');
+// const openFormButton = document.querySelector('#open-form-button');
 
-const openFormButton = document.querySelector('#open-form-button');
-const closeFormButton = document.querySelector('#close-form-button');
 
 signinForm.addEventListener('submit', event => {
   event.preventDefault();
@@ -51,10 +48,10 @@ loginForm.addEventListener('submit', event => {
   .catch(error => console.log(`Ocorreu de solicitação: ${error}`));
 });
 
-openFormButton.addEventListener('click', () => {
-  openLoginForm();
-});
+// openFormButton.addEventListener('click', () => {
+//   openModal();
+// });
 
-closeFormButton.addEventListener('click', () => {
-  closeLoginForm();
-});
+// closeFormButton.addEventListener('click', () => {
+//   closeLoginForm();
+// });

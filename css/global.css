@@ -12,3 +12,33 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
+.modal-container {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8));
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal-content {
+  padding: 2.5em;
+}
+
+.modal-close-button {
+  position: relative;
+  font-weight: 400;
+  color: var(--text-secondary-color);
+  font-size: 2em;
+  left: 100%;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.modal-close-button:hover {
+  color: var(--primary-color);
+}
