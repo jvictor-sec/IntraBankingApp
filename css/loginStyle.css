@@ -147,8 +147,8 @@ span:hover {
 .modal-content {
   width: 35%;
   padding: 0;
-  border: 1px solid red;
-  /* height: 90%; */
+  /* border: 1px solid red;
+  height: 90%; */
 }
 
 .login-form {
