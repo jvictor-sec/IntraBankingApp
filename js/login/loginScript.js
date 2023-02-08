@@ -1,9 +1,6 @@
 const signinForm = document.querySelector('#signin-form');
 const loginForm = document.querySelector('#login-form');
 
-// const openFormButton = document.querySelector('#open-form-button');
-
-
 signinForm.addEventListener('submit', event => {
   event.preventDefault();
 
@@ -18,7 +15,7 @@ signinForm.addEventListener('submit', event => {
   .then(response => {
     if(response.status === 'success') {
       showNotification('Novo cadastro', response.data);
-      openLoginForm();
+      openModal();
     } else {
       showNotification('Novo cadastro', response.data);
     }
@@ -39,19 +36,11 @@ loginForm.addEventListener('submit', event => {
   .then(response => response.json())
   .then(response => {
     if(response.status === 'success') {
-      sessionStorage.setItem('sessionId', crypto.randomUUID());
+      sessionStorage.setItem('userEmail', FORM_DATA.user_email);
       window.location.replace('index.html');
     } else {
-      showNotification('Novo cadastro', response.data);
+      showNotification('Logging in', response.data);
     }
   })
   .catch(error => console.log(`Ocorreu de solicitação: ${error}`));
 });
-
-// openFormButton.addEventListener('click', () => {
-//   openModal();
-// });
-
-// closeFormButton.addEventListener('click', () => {
-//   closeLoginForm();
-// });

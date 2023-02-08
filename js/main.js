@@ -8,17 +8,19 @@ function showNotification(title, body) {
     }
 }
 
-(function openModal() {
-  const modalOpenButton = document.querySelector('.modal-open-button');
+const modalOpenButton = document.querySelector('.modal-open-button');
 
-  modalOpenButton.addEventListener('click', () => {
-    const modalContainer = document.querySelector('.modal-container');
+function openModal() {
+  const modalContainer = document.querySelector('.modal-container');
 
-    modalContainer.style.display = 'flex';
+  modalContainer.style.display = 'flex';
 
-    setTimeout(() => { document.addEventListener('click', closeModal, false) }, 200);
-  });
-})();
+  setTimeout(() => { document.addEventListener('click', closeModal, false) }, 200);
+}
+
+modalOpenButton.addEventListener('click', () => {
+  openModal();
+});
 
 function closeModal(event) {
   const modalContainer = document.querySelector('.modal-container');
