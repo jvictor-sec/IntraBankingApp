@@ -15,7 +15,7 @@ signinForm.addEventListener('submit', event => {
   .then(response => {
     if(response.status === 'success') {
       showNotification('Novo cadastro', response.data);
-      openModal();
+      openModal('login-modal-open-button');
     } else {
       showNotification('Novo cadastro', response.data);
     }

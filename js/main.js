@@ -1,5 +1,7 @@
 const API_URL = 'http://localhost/IntraBankingAPI/public_html/index.php/api';
 
+let selector;
+
 function showNotification(title, body) {
   let notification = new Notification(title, { body });
   notification.onclick = () => {
@@ -8,24 +10,30 @@ function showNotification(title, body) {
     }
 }
 
-const modalOpenButton = document.querySelector('.modal-open-button');
+const modalOpenButton = document.querySelectorAll('.modal-open-button');
 
-function openModal() {
-  const modalContainer = document.querySelector('.modal-container');
+function openModal(modalSelector) {
+  selector = modalSelector.split('-');
+  selector.splice(2, 2);
+  selector = selector.join('-');
+
+  const modalContainer = document.querySelector(`#${selector}-container`);
 
   modalContainer.style.display = 'flex';
 
   setTimeout(() => { document.addEventListener('click', closeModal, false) }, 200);
 }
 
-modalOpenButton.addEventListener('click', () => {
-  openModal();
+modalOpenButton.forEach(openButton => {
+  openButton.addEventListener('click', () => {
+    openModal(openButton.id);
+  });
 });
 
 function closeModal(event) {
-  const modalContainer = document.querySelector('.modal-container');
-  const modalContent = document.querySelector('.modal-content');
-  const modalCloseButton = document.querySelector('.modal-close-button');
+  const modalContainer = document.querySelector(`#${selector}-container`);
+  const modalContent = document.querySelector(`#${selector}-content`);
+  const modalCloseButton = document.querySelector(`#${selector}-close-button`);
 
   if(!modalContent.contains(event.target) || modalCloseButton.contains(event.target)) {
     modalContainer.style.display = 'none';
