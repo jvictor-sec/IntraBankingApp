@@ -17,15 +17,26 @@
       <nav class="header-nav-container">
         <a href="index.html" class="logo">Intra Banking <ion-icon name="wallet-outline"></ion-icon></a>
 
-        <button type="button" name="button">Meu perfil <ion-icon name="person-circle-sharp"></ion-icon></button>
+        <button type="button" name="button" id="user-modal-button" class="modal-open-button">Meu perfil <ion-icon name="person-circle-sharp"></ion-icon></button>
       </nav>
     </header>
 
-    <main>
+    <main class="main-container">
+      <h1>Seja bem-vindo(a), <span>nome-usuário</span>.</h1>
 
+      <section class="finance-section">
+        <form class="search-finance-form" action="" method="">
+          <div class="search-fields">
+            <input type="search" name="searched-finance" required class="search-input">
+            <label for="searched-finance" class="search-label"><ion-icon name="search"></ion-icon></label>
+          </div>
+
+          <button type="button" name="button" id="finance-modal-button" class="modal-open-button">Nova finança</button>
+        </form>
+      </section>
     </main>
 
-    <footer>
+    <footer class="footer-container">
 
     </footer>
   </body>
