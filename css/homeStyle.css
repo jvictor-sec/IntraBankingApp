@@ -110,7 +110,6 @@
   color: var(--primary-color);
 }
 
-
 .search-finance-form button {
   border: none;
   padding: 0.7em;
@@ -125,6 +124,28 @@
 
 .search-finance-form button:hover {
   color: var(--primary-color);
+}
+
+.finance-section, .main-container, .search-finance-form, .finance-table {
+  /* border: 1px solid black; */
+}
+
+.finance-section {
+  border: 2px solid black;
+}
+
+.finance-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.finance-table-column {
+  background: #CCC;
+  padding: 0.5em;
+}
+
+.finance-table tbody th, .finance-table tbody td {
+  padding: 0.2em;
 }
 
 /* .modal-container, .modal-content {
