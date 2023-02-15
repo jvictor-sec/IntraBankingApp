@@ -126,6 +126,32 @@
   color: var(--primary-color);
 }
 
+.finance-modal {
+  width: 35%;
+  padding: 0;
+}
+
+.finance-form {
+  width: 100%;
+  background-color: var(--text-secondary-color);
+}
+
+.finance-form fieldset {
+  padding-top: 0.5em;
+}
+
+.finance-form fieldset legend {
+  color: var(--text-secondary-color);
+}
+
+.finance-form fieldset .form-fields {
+  margin-top: 3.5em;
+}
+
+.finance-form fieldset .form-fields .form-input {
+  border-bottom: 1px solid var(--text-primary-color);
+}
+
 .finance-section, .main-container, .search-finance-form, .finance-table {
   /* border: 1px solid black; */
 }

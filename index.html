@@ -13,6 +13,45 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" defer></script>
   </head>
   <body>
+    <div id="finance-modal-container" class="modal-container">
+      <div id="finance-modal-content" class="modal-content finance-modal">
+        <span id="finance-modal-close-button" class="modal-close-button">&times;</span>
+
+        <form id="finance-form" class="form-container finance-form" action="" method="POST">
+          <fieldset>
+            <legend>Cadastre uma finança</legend>
+
+            <div class="form-fields">
+              <input type="text" name="finance_name" required class="form-input">
+              <label for="finance_name" class="form-label">Nome</label>
+            </div>
+
+            <div class="form-fields">
+              <input type="text" name="finance_description" required class="form-input">
+              <label for="finance_description" class="form-label">Descrição</label>
+            </div>
+
+            <div class="form-fields">
+              <input type="number" name="finance_price" required class="form-input">
+              <label for="finance_price" class="form-label validated-label">Preço</label>
+            </div>
+
+            <div class="form-fields">
+              <input type="date" name="finance_name" required class="form-input">
+              <label for="finance_name" class="form-label validated-label">Data</label>
+            </div>
+
+            <div class="form-fields">
+              <input type="text" name="recipient_name" required class="form-input">
+              <label for="recipient_name" class="form-label">Beneficiário</label>
+            </div>
+
+            <button type="submit" name="button" class="form-button">Criar</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
     <header class="header-container">
       <nav class="header-nav-container">
         <a href="index.html" class="logo">Intra Banking <ion-icon name="wallet-outline"></ion-icon></a>
