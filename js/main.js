@@ -1,5 +1,6 @@
 const API_URL = 'http://localhost/IntraBankingAPI/public_html/index.php/api';
 
+const modalOpenButton = document.querySelectorAll('.modal-open-button');
 let selector;
 
 function showNotification(title, body) {
@@ -9,8 +10,6 @@ function showNotification(title, body) {
       window.parent.focus();
     }
 }
-
-const modalOpenButton = document.querySelectorAll('.modal-open-button');
 
 function openModal(modalSelector) {
   selector = modalSelector.split('-');
