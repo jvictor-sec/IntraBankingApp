@@ -21,29 +21,31 @@
           <fieldset>
             <legend>Cadastre uma finança</legend>
 
+            <input type="hidden" name="fk_user" id="fk_user" value="">
+
             <div class="form-fields">
               <input type="text" name="finance_name" required class="form-input">
               <label for="finance_name" class="form-label">Nome</label>
             </div>
 
             <div class="form-fields">
-              <input type="text" name="finance_description" required class="form-input">
+              <input type="text" name="finance_description" value="Nenhuma" class="form-input">
               <label for="finance_description" class="form-label">Descrição</label>
             </div>
 
             <div class="form-fields">
-              <input type="number" name="finance_price" required class="form-input">
+              <input type="number" step="0.01" min="0" name="finance_price" required class="form-input">
               <label for="finance_price" class="form-label validated-label">Preço</label>
             </div>
 
             <div class="form-fields">
-              <input type="date" name="finance_name" required class="form-input">
-              <label for="finance_name" class="form-label validated-label">Data</label>
+              <input type="date" name="finance_date" required class="form-input">
+              <label for="finance_date" class="form-label validated-label">Data</label>
             </div>
 
             <div class="form-fields">
-              <input type="text" name="recipient_name" required class="form-input">
-              <label for="recipient_name" class="form-label">Beneficiário</label>
+              <input type="text" name="finance_recipient" value="Nenhum" class="form-input">
+              <label for="finance_recipient" class="form-label">Beneficiário</label>
             </div>
 
             <button type="submit" name="button" class="form-button">Criar</button>
@@ -61,7 +63,7 @@
     </header>
 
     <main class="main-container">
-      <h1>Seja bem-vindo(a), <span>nome-usuário</span>.</h1>
+      <h1>Seja bem-vindo(a), <span id="user_name"></span>.</h1>
 
       <section class="finance-section">
         <form class="search-finance-form" action="" method="">
@@ -77,29 +79,20 @@
           <thead>
             <tr>
               <th scope="col" class="finance-table-column">#</th>
-              <th scope="col" class="finance-table-column">First</th>
-              <th scope="col" class="finance-table-column">Last</th>
-              <th scope="col" class="finance-table-column">Handle</th>
+              <th scope="col" class="finance-table-column">Nome</th>
+              <th scope="col" class="finance-table-column">Descrição</th>
+              <th scope="col" class="finance-table-column">Preço</th>
+              <th scope="col" class="finance-table-column">Data</th>
+              <th scope="col" class="finance-table-column">Beneficiário</th
             </tr>
           </thead>
-          <tbody>
-            <tr>
+          <tbody id="finance-table-body">
+            <!-- <tr>
               <th scope="row">1</th>
               <td>Mark</td>
               <td>Otto</td>
               <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </section>

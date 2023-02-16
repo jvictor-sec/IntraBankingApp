@@ -15,6 +15,7 @@ signinForm.addEventListener('submit', event => {
   .then(response => {
     if(response.status === 'success') {
       showNotification('Novo cadastro', response.data);
+      signinForm.reset;
       openModal('login-modal-open-button');
     } else {
       showNotification('Novo cadastro', response.data);
@@ -36,7 +37,7 @@ loginForm.addEventListener('submit', event => {
   .then(response => response.json())
   .then(response => {
     if(response.status === 'success') {
-      sessionStorage.setItem('userEmail', FORM_DATA.user_email);
+      sessionStorage.setItem('userEmail', FORM_DATA.get('user_email'));
       window.location.replace('index.html');
     } else {
       showNotification('Logging in', response.data);
