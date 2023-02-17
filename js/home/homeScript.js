@@ -20,7 +20,7 @@ fetch(API_URL+`/user/${userEmail}`, {
 
   userIdField.value = userId;
   userNameField.textContent = userName;
-  
+
   return userId;
 
 })
@@ -34,13 +34,16 @@ fetch(API_URL+`/user/${userEmail}`, {
     financeTableBody.innerHTML = '';
 
     response.data.forEach(finance => {
+      let financeDate = finance.finance_date.split('-').reverse().join('/');
+      let financePrice = parseFloat(finance.finance_price).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+
       financeTableBody.innerHTML += `
         <tr>
           <th scope="row">${finance.finance_id}</th>
           <td>${finance.finance_name}</td>
           <td>${finance.finance_description}</td>
-          <td>${finance.finance_price}</td>
-          <td>${finance.finance_date}</td>
+          <td>${financePrice}</td>
+          <td>${financeDate}</td>
           <td>${finance.finance_recipient}</td>
         </tr>
       `;
