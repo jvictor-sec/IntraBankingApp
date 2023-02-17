@@ -26,7 +26,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-Aplicativo de gestão financeira voltado para famílias que compartilham suas contas bancárias, onde cada um pode verificar suas despesas e o dono da conta é capaz de gerenciar melhor as dívidas.
+Aplicativo de gestão financeira que permite o controle das despesas e o histórico de gastos 
 
 ## :gear: Funcionamento
 
