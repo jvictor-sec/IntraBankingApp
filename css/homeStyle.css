@@ -186,6 +186,39 @@
   /* border-bottom: 1px solid red; */
 }
 
+.finance-button {
+  width: 55%;
+  padding: 0.7em;
+  border: none;
+  border-radius: 1em;
+  color: var(--text-secondary-color);
+  font-size: 0.9em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+  vertical-align: middle;
+}
+
+.finance-button ion-icon {
+  font-size: 1.3em;
+  vertical-align: middle;
+}
+
+.edit-button {
+  background: #00C04B;
+}
+
+.edit-button:hover {
+  background: #008631;
+}
+
+.delete-button {
+  background: var(--primary-color);
+}
+
+.delete-button:hover {
+  background: var(--secondary-color);
+}
 /* .modal-container, .modal-content {
   border: 1px solid red;
 } */
