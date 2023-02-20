@@ -79,16 +79,11 @@
   background: #008631;
 }
 
-/* #user-modal-container {
-  display: flex;
-} */
-
 .main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2em;
-  /* border: 1px solid red; */
 }
 
 .main-container h1 {

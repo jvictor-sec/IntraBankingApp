@@ -33,7 +33,6 @@ function setOpenButton() {
 
 setOpenButton();
 
-
 function closeModal(event) {
   const modalContainer = document.querySelector(`#${selector}-container`);
   const modalContent = document.querySelector(`#${selector}-content`);
