@@ -26,13 +26,13 @@ function closeUpdateModal() {
 function updateFinance(finance) {
   const updateFinanceForm = document.querySelector('#financeUpdate-form');
 
-  updateFinanceForm["finance_id"].value = finance.finance_id;
-  updateFinanceForm["update_fk_user"].value = finance.fk_user;
-  updateFinanceForm["finance_name"].value = finance.finance_name;
-  updateFinanceForm["finance_description"].value = finance.finance_description;
-  updateFinanceForm["finance_price"].value = finance.finance_price;
-  updateFinanceForm["finance_date"].value = finance.finance_date;
-  updateFinanceForm["finance_recipient"].value = finance.finance_recipient;
+  updateFinanceForm['finance_id'].value = finance.finance_id;
+  updateFinanceForm['update_fk_user'].value = finance.fk_user;
+  updateFinanceForm['finance_name'].value = finance.finance_name;
+  updateFinanceForm['finance_description'].value = finance.finance_description;
+  updateFinanceForm['finance_price'].value = finance.finance_price;
+  updateFinanceForm['finance_date'].value = finance.finance_date;
+  updateFinanceForm['finance_recipient'].value = finance.finance_recipient;
 
   openUpdateModal();
 
@@ -52,12 +52,14 @@ function updateFinance(finance) {
     })
     .then(response => response.json())
     .then(response => {
-      showNotification('Finanças', response.data);
-    })
-    .then(() => {
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000)
+      if(response.status === 'success') {
+        showNotification('Finanças', response.data);
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000)
+      } else {
+        showNotification('Finanças', response.data);
+      }
     })
     .catch(error => console.log(`Ocorreu um erro de solicitação: ${error}`))
   })
@@ -67,19 +69,21 @@ function deleteFinance(finance) {
   if(confirm('Você está prestes a excluir esta finança permanentemente.')) {
     let financeIdJson = { 'finance_id': finance.finance_id };
 
-    fetch(API_URL+`/finance/${finance.finance_id}`, {
+    fetch(API_URL+'/finance', {
       method: 'DELETE',
       mode: 'cors',
       body: JSON.stringify(financeIdJson)
     })
     .then(response => response.json())
     .then(response => {
-      showNotification('Finanças', response.data);
-    })
-    .then(() => {
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000)
+      if(response.status === 'success') {
+        showNotification('Finanças', response.data);
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000)
+      } else {
+        showNotification('Finanças', response.data);
+      }
     })
     .catch(error => console.log(`Ocorreu um erro de solicitação: ${error}`))
   }

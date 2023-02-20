@@ -18,11 +18,79 @@ fetch(API_URL+`/user/${sessionStorage.getItem('userEmail')}`, {
   // Administração de conta
   const userForm = document.querySelector('#user-form');
 
+  let userDDD = `(${userData.user_ddd})`;
+  let userNumber = `${userData.user_number.slice(0, 5)}-${userData.user_number.slice(5, 9)}`;
+
+  let userPhoneNumber = `${userDDD} ${userNumber}`;
+
+  userForm['user_id'].value = userData.user_id;
+  userForm['user_name'].value = userData.user_name;
+  userForm['user_email'].value = userData.user_email;
+  userForm['user_phone_number'].value = userPhoneNumber;
+  userForm['user_password'].value = userData.user_password;
+
   userForm.addEventListener('submit', event => {
     event.preventDefault();
 
-    console.log('Code...');
+    let data = new FormData(userForm);
+
+    const updateData = {};
+
+    data.forEach((value, key) => updateData[key] = value);
+
+    fetch(API_URL+'/user', {
+      method: 'PUT',
+      mode: 'cors',
+      body: JSON.stringify(updateData)
+    })
+    .then(response => response.json())
+    .then(response => {
+      showNotification('Usuário', response.data);
+    })
+    .then(() => {
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000)
+    })
   });
+
+  const deleteUserButton = document.querySelector('#delete-user-button');
+
+  deleteUserButton.addEventListener('click', () => {
+    if(confirm('Você está prestes a excluir seu usuário e todas suas finanças.')) {
+      let userIdJson = { 'user_id': userData.user_id };
+
+      fetch(API_URL+'/user', {
+        method: 'DELETE',
+        mode: 'cors',
+        body: JSON.stringify(userIdJson)
+      })
+      .then(response => response.json())
+      .then(response => {
+        if(response.status === 'success') {
+          showNotification('Finanças', response.data);
+
+          setTimeout(() => {
+            sessionStorage.clear();
+            checkSessionStorage();
+          }, 2000)
+        } else {
+          showNotification('Finanças', response.data);
+        }
+      })
+      .catch(error => console.log(`Ocorreu um erro de solicitação: ${error}`));
+    }
+  });
+
+  const signOut = document.querySelector('#sign-out');
+
+  signOut.addEventListener('click', () => {
+    if(confirm('Você está prestes a sair da sua conta.')) {
+      sessionStorage.clear();
+      checkSessionStorage();
+    }
+  });
+
 
   // Cadastro de finanças
   const financeForm = document.querySelector('#financeInsert-form');
@@ -42,7 +110,7 @@ fetch(API_URL+`/user/${sessionStorage.getItem('userEmail')}`, {
       if(response.status === 'success') {
         showNotification('Novo cadastro', response.data);
         financeForm.reset;
-        listFinanceTable(userData.user_id);
+        setTimeout(() => {window.location.reload()}, 2000);
       } else {
         showNotification('Novo cadastro', response.data);
       }
@@ -94,12 +162,3 @@ fetch(API_URL+`/user/${sessionStorage.getItem('userEmail')}`, {
   })
 })
 .catch(error => console.log(`Ocorreu um erro de solicitação: ${error}`));
-
-const signOut = document.querySelector('#sign-out');
-
-signOut.addEventListener('click', () => {
-  if(confirm('Você está prestes a sair da sua conta.')) {
-    sessionStorage.clear();
-    checkSessionStorage();
-  }
-})
