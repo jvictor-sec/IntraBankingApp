@@ -5,7 +5,6 @@
   padding: 5em;
   gap: 5em;
   height: 100vh;
-  /* background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)),url("../img/background.jpg"); */
   background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)),url("../img/background.jpg");
   background-position: center;
   background-size: cover;
@@ -57,12 +56,6 @@ span:hover {
   color: var(--text-secondary-color);
 }
 
-/* .signin-form fieldset p {
-  font-size: 0.8em;
-  margin-top: 1.2em;
-  text-align: center;
-} */
-
 .modal-content {
   width: 35%;
   padding: 0;
@@ -79,4 +72,72 @@ span:hover {
 
 .login-form fieldset .form-fields .form-input {
   border-bottom: 1px solid var(--text-primary-color);
+}
+
+@media(max-width: 1150px) {
+  .signin-form {
+    width: 47%;
+  }
+}
+
+@media(max-width: 1000px) {
+  .main-container {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .main-text {
+    text-align: center;
+    max-width: 70%;
+  }
+
+  .main-text h2 {
+    margin-top: 0.3em;
+  }
+
+  .signin-form {
+    width: 70%;
+  }
+
+  .modal-content {
+    width: 45%;
+  }
+}
+
+@media(max-width: 750px) {
+  .main-text {
+    max-width: 100%;
+  }
+
+  .signin-form {
+    width: 100%;
+  }
+
+  .modal-content {
+    width: 65%;
+  }
+}
+
+@media(max-width: 600px) {
+  .main-container {
+    padding: 2.5em;
+  }
+
+  .signin-form fieldset .form-fields {
+      margin-top: 3.5em;
+  }
+
+  .modal-content {
+    width: 75%;
+  }
+}
+
+@media(max-width: 470px) {
+  .main-container {
+    padding: 0.5em;
+  }
+
+  .modal-content {
+    width: 85%;
+  }
 }
