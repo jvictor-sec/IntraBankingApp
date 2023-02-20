@@ -57,11 +57,11 @@ span:hover {
   color: var(--text-secondary-color);
 }
 
-.signin-form fieldset p {
+/* .signin-form fieldset p {
   font-size: 0.8em;
   margin-top: 1.2em;
   text-align: center;
-}
+} */
 
 .modal-content {
   width: 35%;

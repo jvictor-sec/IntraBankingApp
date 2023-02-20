@@ -21,7 +21,7 @@ signinForm.addEventListener('submit', event => {
       showNotification('Novo cadastro', response.data);
     }
   })
-  .catch(error => console.log(`Ocorreu de solicitação: ${error}`));
+  .catch(error => console.log(`Ocorreu um erro de solicitação: ${error}`));
 });
 
 loginForm.addEventListener('submit', event => {

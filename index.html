@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/homeStyle.css">
     <script src="./js/main.js" defer charset="utf-8"></script>
+    <script src="./js/home/homeFunctions.js" defer charset="utf-8"></script>
     <script src="./js/home/homeScript.js" defer charset="utf-8"></script>
 
     <!--  Third party -->
@@ -13,15 +14,98 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" defer></script>
   </head>
   <body>
-    <div id="finance-modal-container" class="modal-container">
-      <div id="finance-modal-content" class="modal-content finance-modal">
-        <span id="finance-modal-close-button" class="modal-close-button">&times;</span>
+    <div id="user-modal-container" class="modal-container">
+      <div id="user-modal-content" class="modal-content">
+        <span id="user-modal-close-button" class="modal-close-button">&times;</span>
 
-        <form id="finance-form" class="form-container finance-form" action="" method="POST">
+        <form id="user-form" class="form-container user-form" action="" method="POST">
+          <fieldset>
+            <legend>Administre sua conta</legend>
+
+            <input type="hidden" name="user_id" class="user-id-input" value="">
+
+            <div class="form-fields">
+              <input type="text" name="user_name" required class="form-input signin-input">
+              <label for="name" class="form-label">Nome</label>
+            </div>
+
+            <div class="form-fields">
+              <input type="email" name="user_email" required placeholder="exemplo@exemplo.com" class="form-input signin-input">
+              <label for="email" class="form-label validated-label">Email</label>
+            </div>
+
+            <div class="form-fields">
+              <input type="tel" name="user_phone_number" required pattern="(\([0-9]{2}\))\s([0-9]{5})-([0-9]{4})" placeholder="(99) 99999-9999" class="form-input signin-input">
+              <label for="tel" class="form-label validated-label">Número</label>
+            </div>
+
+            <div class="form-fields">
+              <input type="password" name="user_password" required class="form-input signin-input">
+              <label for="password" class="form-label">Senha</label>
+            </div>
+
+            <p>Deseja deslogar da sua conta? Clique <span id="sign-out">aqui</span></p>
+
+            <div class="button-container">
+              <button type="submit" name="button" class="form-button">Editar</button>
+              <button type="button" name="button" class="form-button">Excluir</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <div id="financeUpdate-modal-container" class="modal-container">
+      <div id="financeUpdate-modal-content" class="modal-content finance-modal">
+        <span id="financeUpdate-modal-close-button" class="modal-close-button">&times;</span>
+
+        <form id="financeUpdate-form" class="form-container finance-form" action="" method="POST">
           <fieldset>
             <legend>Cadastre uma finança</legend>
 
-            <input type="hidden" name="fk_user" id="fk_user" value="">
+            <input type="hidden" name="finance_id" id="finance_id" value="">
+            <input type="hidden" name="update_fk_user" id="update_fk_user" class="user-id-input" value="">
+
+            <div class="form-fields">
+              <input type="text" name="finance_name" required class="form-input">
+              <label for="finance_name" class="form-label">Nome</label>
+            </div>
+
+            <div class="form-fields">
+              <input type="text" name="finance_description" value="Nenhuma" class="form-input">
+              <label for="finance_description" class="form-label">Descrição</label>
+            </div>
+
+            <div class="form-fields">
+              <input type="number" step="0.01" min="0" name="finance_price" required class="form-input">
+              <label for="finance_price" class="form-label validated-label">Preço</label>
+            </div>
+
+            <div class="form-fields">
+              <input type="date" name="finance_date" required class="form-input">
+              <label for="finance_date" class="form-label validated-label">Data</label>
+            </div>
+
+            <div class="form-fields">
+              <input type="text" name="finance_recipient" value="Nenhum" class="form-input">
+              <label for="finance_recipient" class="form-label">Beneficiário</label>
+            </div>
+
+            <button type="submit" name="button" class="form-button">Editar</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <div id="financeInsert-modal-container" class="modal-container">
+      <div id="financeInsert-modal-content" class="modal-content finance-modal">
+        <span id="financeInsert-modal-close-button" class="modal-close-button">&times;</span>
+
+        <form id="financeInsert-form" class="form-container finance-form" action="" method="POST">
+          <fieldset>
+            <legend>Cadastre uma finança</legend>
+
+            <input type="hidden" name="fk_user" id="insert_fk_user" class="user-id-input" value="">
 
             <div class="form-fields">
               <input type="text" name="finance_name" required class="form-input">
@@ -63,16 +147,14 @@
     </header>
 
     <main class="main-container">
-      <h1>Seja bem-vindo(a), <span id="user_name"></span>.</h1>
+      <h1>Seja bem-vindo(a), <span id="user-name-span"></span>.</h1>
 
       <section class="finance-section">
-        <form class="search-finance-form" action="" method="">
-          <div class="search-fields">
-            <input type="search" name="searched-finance" required class="search-input">
-            <label for="searched-finance" class="search-label"><ion-icon name="search"></ion-icon></label>
-          </div>
+        <div class="finance-header">
+          <h2>Tabela de finanças <ion-icon name="list"></ion-icon></h2>
 
-          <button type="button" name="button" id="finance-modal-button" class="modal-open-button">Nova finança</button>
+          <button type="button" name="button" id="financeInsert-modal-button" class="modal-open-button">Nova finança</button>
+        </div>
         </form>
 
         <div class="table-container">

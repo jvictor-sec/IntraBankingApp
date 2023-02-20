@@ -1,52 +1,59 @@
-if(!sessionStorage.getItem('userEmail')) {
-  window.location.replace('login.html');
-}
-
-const userEmail = sessionStorage.getItem('userEmail');
-
-const userNameField = document.querySelector('#user_name');
-const userIdField = document.querySelector('#fk_user');
-const financeTableBody = document.querySelector('#finance-table-body');
-
-function deleteFinance(financeId) {
-  if(confirm('Você está prestes a excluir esta finança permanentemente.')) {
-    let financeIdJson = { 'finance_id': financeId };
-
-    fetch(API_URL+`/finance/${financeId}`, {
-      method: 'DELETE',
-      mode: 'cors',
-      body: JSON.stringify(financeIdJson)
-    })
-    .then(response => response.json())
-    .then(response => {
-      showNotification('Finanças', response.data);
-    })
-    .then(() => {
-      setTimeout(() => {window.location.reload()}, 2000)
-
-    })
-    .catch(error => console.log(`Ocorreu um erro de solicitação: ${error}`))
-  }
-}
-
-// Listando informações do usuário
-fetch(API_URL+`/user/${userEmail}`, {
+fetch(API_URL+`/user/${sessionStorage.getItem('userEmail')}`, {
   method: 'GET',
   mode: 'cors'
 })
 .then(response => response.json())
 .then(response => {
-  const userId = response.data.user_id;
-  const userName = response.data.user_name;
+  const userNameSpan = document.querySelector('#user-name-span');
+  const userIdInputs = document.querySelectorAll('.user-id-input');
 
-  userIdField.value = userId;
-  userNameField.textContent = userName;
+  const userData = response.data;
 
-  return userId;
+  userNameSpan.textContent = userData.user_name;
 
-})
-.then(userId => {
-  fetch(API_URL+`/finance/${userId}`, {
+  userIdInputs.forEach(input => {
+    input.value = userData.user_id;
+  });
+
+  // Administração de conta
+  const userForm = document.querySelector('#user-form');
+
+  userForm.addEventListener('submit', event => {
+    event.preventDefault();
+
+    console.log('Code...');
+  });
+
+  // Cadastro de finanças
+  const financeForm = document.querySelector('#financeInsert-form');
+
+  financeForm.addEventListener('submit', event => {
+    event.preventDefault();
+
+    const FORM_DATA = new FormData(financeForm);
+
+    fetch(API_URL+'/finance', {
+      method: 'POST',
+      mode: 'cors',
+      body: FORM_DATA
+    })
+    .then(response => response.json())
+    .then(response => {
+      if(response.status === 'success') {
+        showNotification('Novo cadastro', response.data);
+        financeForm.reset;
+        listFinanceTable(userData.user_id);
+      } else {
+        showNotification('Novo cadastro', response.data);
+      }
+    })
+    .catch(error => console.log(`Ocorreu um erro de solicitação: ${error}`));
+  });
+
+  // Listagem de finanças
+  const financeTableBody = document.querySelector('#finance-table-body');
+
+  fetch(API_URL+`/finance/${userData.user_id}`, {
     method: 'GET',
     mode: 'cors'
   })
@@ -66,62 +73,33 @@ fetch(API_URL+`/user/${userEmail}`, {
           <td>${financePrice}</td>
           <td>${financeDate}</td>
           <td>${finance.finance_recipient}</td>
-          <td><button class="finance-button edit-button">Editar <ion-icon name="create"></ion-icon></ion-icon></button></td>
-          <td><button type="button" id="deleteButtonId${finance.finance_id}" class="finance-button delete-button">Excluir <ion-icon name="trash"></ion-icon></button></td>
+          <td><button type="button" id="updateButtonClass${finance.finance_id}" class="finance-button update-button"><ion-icon name="create"></ion-icon></ion-icon></button></td>
+          <td><button type="button" id="deleteButtonClass${finance.finance_id}" class="finance-button delete-button"><ion-icon name="trash"></ion-icon></button></td>
         </tr>
       `;
 
       setTimeout(() => {
-        const deleteButton = document.getElementById(`deleteButtonId${finance.finance_id}`);
+        const updateButton = document.querySelector(`#updateButtonClass${finance.finance_id}`);
+        const deleteButton = document.querySelector(`#deleteButtonClass${finance.finance_id}`);
+
+        updateButton.addEventListener('click', () => {
+          updateFinance(finance);
+        });
 
         deleteButton.addEventListener('click', () => {
-          deleteFinance(finance.finance_id);
+          deleteFinance(finance);
         })
       }, 1000);
-
-
-
-      // console.log('Não deu certo');
-
-      //onclick="deleteFinance('${Object.entries(finance)}')"
-      // id="deleteButtonId${finance.finance_id}"
-      // const deleteButton = document.getElementById(`deleteButtonId${finance.finance_id}`);
-      //
-      // deleteButton.setAttribute('onclick', deleteFinance('something'))
-
-      // deleteButton.addEventListener('click', () => {
-      //   console.log("something");
-      // })
-      //
-      // console.log(deleteButton)
-
     });
   })
-  .catch(error => console.log(`Ocorreu um erro de solicitação: ${error}`));
 })
 .catch(error => console.log(`Ocorreu um erro de solicitação: ${error}`));
 
+const signOut = document.querySelector('#sign-out');
 
-const financeForm = document.querySelector('#finance-form');
-
-financeForm.addEventListener('submit', event => {
-  event.preventDefault();
-
-  const FORM_DATA = new FormData(financeForm);
-
-  fetch(API_URL+'/finance', {
-    method: 'POST',
-    mode: 'cors',
-    body: FORM_DATA
-  })
-  .then(response => response.json())
-  .then(response => {
-    if(response.status === 'success') {
-      showNotification('Novo cadastro', response.data);
-      financeForm.reset;
-    } else {
-      showNotification('Novo cadastro', response.data);
-    }
-  })
-  .catch(error => console.log(`Ocorreu um erro de solicitação: ${error}`));
-});
+signOut.addEventListener('click', () => {
+  if(confirm('Você está prestes a sair da sua conta.')) {
+    sessionStorage.clear();
+    checkSessionStorage();
+  }
+})

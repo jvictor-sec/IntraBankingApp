@@ -16,6 +16,17 @@
   font-family: 'Poppins', sans-serif;
 }
 
+span {
+  color: var(--primary-color);
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.5s;
+}
+
+span:hover {
+  color: var(--secondary-color);
+}
+
 .modal-container {
   display: none;
   justify-content: center;
@@ -47,6 +58,8 @@
 }
 
 .form-container {
+  width: 100%;
+  background-color: var(--text-secondary-color);
   border-radius: 1em;
   padding: 1em;
 }
@@ -60,6 +73,7 @@
   font-weight: 500;
   padding: 0.4em;
   background: var(--primary-color);
+  color: var(--text-secondary-color);
 }
 
 .form-container fieldset .form-fields {
@@ -74,6 +88,7 @@
   width: 100%;
   font-size: 0.9em;
   letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--text-primary-color);
 }
 
 .form-container fieldset .form-fields .form-label {
@@ -98,6 +113,12 @@
   font-weight: 500;
   font-size: 0.8em;
   color: var(--primary-color);
+}
+
+.form-container fieldset p {
+  font-size: 0.8em;
+  margin-top: 1.2em;
+  text-align: center;
 }
 
 .form-container fieldset .form-button {

@@ -23,11 +23,16 @@ function openModal(modalSelector) {
   setTimeout(() => { document.addEventListener('click', closeModal, false) }, 200);
 }
 
-modalOpenButton.forEach(openButton => {
-  openButton.addEventListener('click', () => {
-    openModal(openButton.id);
+function setOpenButton() {
+  modalOpenButton.forEach(openButton => {
+    openButton.addEventListener('click', () => {
+      openModal(openButton.id);
+    });
   });
-});
+};
+
+setOpenButton();
+
 
 function closeModal(event) {
   const modalContainer = document.querySelector(`#${selector}-container`);

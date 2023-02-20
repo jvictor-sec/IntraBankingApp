@@ -51,6 +51,38 @@
   background: var(--secondary-color);
 }
 
+.user-form fieldset {
+  padding-top: 0em;
+}
+
+.user-form fieldset .form-fields {
+  margin-top: 3.5em;
+}
+
+.user-form fieldset p {
+  font-size: 0.9em;
+}
+
+.user-form fieldset .button-container {
+  margin-top: 1.5em
+}
+
+.user-form fieldset .button-container .form-button {
+  margin-top: 0.5em;
+}
+
+.user-form fieldset .button-container .form-button:first-child {
+  background: #00C04B;
+}
+
+.user-form fieldset .button-container .form-button:first-child:hover {
+  background: #008631;
+}
+
+/* #user-modal-container {
+  display: flex;
+} */
+
 .main-container {
   display: flex;
   flex-direction: column;
@@ -63,16 +95,12 @@
   font-size: 1.8em;
 }
 
-.main-container h1 span {
-  color: var(--primary-color)
-}
-
 .finance-section {
   width: 100%;
   margin-top: 3em;
 }
 
-.search-finance-form {
+.finance-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,36 +109,18 @@
   padding: 1em;
 }
 
-.search-finance-form .search-fields {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  width: 40%;
-  background: var(--tertiary-color);
-  border-radius: 0.5em;
-  padding: 0.5em 0.5em;
-}
-
-.search-finance-form .search-fields .search-input {
-  padding: 0.2em 0.5em;
-  border: none;
-  outline: none;
-  width: 100%;
-  font-size: 0.9em;
-}
-
-.search-finance-form .search-fields .search-label ion-icon {
-  font-size: 1.3em;
-  vertical-align: middle;
-  transition: 0.3s;
+.finance-header h2 {
+  font-weight: 500;
+  font-size: 1.4em;
+  transition: 0.5s;
   cursor: pointer;
 }
 
-.search-finance-form .search-fields .search-label ion-icon:hover {
-  color: var(--primary-color);
+.finance-header h2:hover {
+  color: var(--text-primary-color);
 }
 
-.search-finance-form button {
+.finance-header button {
   border: none;
   padding: 0.7em;
   font-size: 0.8em;
@@ -122,45 +132,25 @@
   background: var(--tertiary-color);
 }
 
-.search-finance-form button:hover {
+.finance-header button:hover {
   color: var(--primary-color);
 }
 
-.finance-modal {
+.modal-content {
   width: 35%;
   padding: 0;
-}
-
-.finance-form {
-  width: 100%;
-  background-color: var(--text-secondary-color);
 }
 
 .finance-form fieldset {
   padding-top: 0.5em;
 }
 
-.finance-form fieldset legend {
-  color: var(--text-secondary-color);
-}
-
 .finance-form fieldset .form-fields {
   margin-top: 3.5em;
 }
 
-.finance-form fieldset .form-fields .form-input {
-  border-bottom: 1px solid var(--text-primary-color);
-}
-
-.finance-section, .main-container, .search-finance-form, .finance-table {
-  /* border: 1px solid black; */
-}
-
 .finance-section {
-  /* display: flex;
-  flex-direction: column; */
   box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-  /* border: 0.5px solid black; */
   gap: 2em;
 }
 
@@ -171,7 +161,7 @@
 
 .finance-table {
   width: 100%;
-  /* border-top: 2px solid black; */
+  table-layout: fixed;
   border-collapse: collapse;
 }
 
@@ -183,7 +173,11 @@
 .finance-table tbody th, .finance-table tbody td {
   padding: 0.2em;
   text-align: center;
-  /* border-bottom: 1px solid red; */
+}
+
+.finance-table tbody tr {
+  word-wrap: break-word;
+  border-bottom: 1px solid #ccc;
 }
 
 .finance-button {
@@ -204,11 +198,11 @@
   vertical-align: middle;
 }
 
-.edit-button {
+.update-button {
   background: #00C04B;
 }
 
-.edit-button:hover {
+.update-button:hover {
   background: #008631;
 }
 
