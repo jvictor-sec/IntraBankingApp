@@ -13,7 +13,7 @@
 <br>
 
 <p align="center">
-  <img alt="rocketpay" src=".github/project.png" width="100%">
+  <img alt="IntraBankingApp" src="./img/readme-background.png" width="100%">
 </p>
 
 ## 🚀 Tecnologias
@@ -26,7 +26,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-Aplicativo de gestão financeira que permite o controle das despesas e o histórico de gastos 
+Aplicativo de gestão financeira que permite o controle das despesas e o histórico de gastos
 
 ## :gear: Funcionamento
 
